@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
-// const bcrypt = require('bcrypt')
-// const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 app.use(cookieParser())
 
@@ -18,9 +18,22 @@ app.get('/read', (req, res) => {
 })
 
 // password encode route using bcrypt
-app.get('/', (req, res) => {
-    res.cookie('name', 'Nitesh Kumar')
-    res.send('cooke create')
+app.get('/encoding', (req, res) => {
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash('Nitesh123@', salt, function(err, hash) {
+            // Store hash in your password DB.
+            console.log(hash);
+            res.send(hash)
+        });
+    });
+})
+
+// password decoding route using bcrypt
+app.get('/decoding', (req, res) => {
+    bcrypt.compare('Nitesh123@', '$2b$10$QQ1PEUYIth8STdtyDCOY..W4TmV1vXWXxs2rZcF3jNu.gwyxqvFza', function(err, result) {
+        res.send(result)
+    });
+    
 })
 
 app.listen(8080, () => {
