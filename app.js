@@ -36,6 +36,19 @@ app.get('/decoding', (req, res) => {
     
 })
 
+// cookie encoding through jwt
+app.get('/jwtSave', (req, res) => {
+    const token = jwt.sign({email: 'nitesh@example.com'}, 'mySecret')
+    res.cookie('token', token)
+    res.send(token)
+})
+
+//cookie decoding using jwt
+app.get('/jwtDecode', (req, res) => {
+    const data = jwt.verify(req.cookies.token, 'mySecret')
+    res.send(data)
+})
+
 app.listen(8080, () => {
     console.log('Connested server');
 })
