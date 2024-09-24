@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+
 <body>
-    <h1>Every thing is fine.</h1>
+    <main class="w-full h-screen bg-zinc-900 text-white flex items-center justify-center flex-col">
+        <h2 class="text-4xl my-4">Register Here</h2>
+        <form action="/create" method="post" class="text-white flex items-center justify-center flex-col">
+            <input type="text" placeholder="Enter Name" name="username"
+                class="m-3 px-3 py-2 w-96 text-black font-semibold focus:outline-offset-2 focus:outline-blue-500">
+            <input type="text" placeholder="Enter email" name="email"
+                class="m-3 px-3 py-2 w-96 text-black font-semibold focus:outline-offset-2 focus:outline-blue-500">
+            <input type="password" placeholder="Enter password" name="password"
+                class="m-3 px-3 py-2 w-96 text-black font-semibold focus:outline-offset-2 focus:outline-blue-500">
+            <input type="number4" placeholder="Enter age" name="age"
+                class="m-3 px-3 py-2 w-96 text-black font-semibold focus:outline-offset-2 focus:outline-blue-500">
+            <button class="text-xl font-bold mt-8 px-16 py-3 bg-green-600">SIGN UP</button>
+        </form>
+    </main>
 </body>
+
 </html>
